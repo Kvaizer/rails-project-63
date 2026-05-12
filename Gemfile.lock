@@ -2,11 +2,13 @@ PATH
   remote: .
   specs:
     hexlet_code (0.1.0)
+      zeitwerk
 
 GEM
   remote: https://rubygems.org/
   specs:
     rake (13.4.2)
+    zeitwerk (2.6.18)
 
 PLATFORMS
   x86_64-linux
