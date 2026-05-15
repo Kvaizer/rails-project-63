@@ -4,10 +4,10 @@ install:
 	bundle install
 
 lint:
-	bundle exec rubocop
+	bundle exec rubocop --cache false
 
 lint-fix:
-	bundle exec rubocop -A
+	bundle exec rubocop -A --cache false
 
 test:
-	ruby -Itest test/hexlet_code_test.rb
+	bundle exec ruby -Itest test/hexlet_code_test.rb
