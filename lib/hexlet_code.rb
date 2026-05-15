@@ -8,4 +8,10 @@ loader.setup
 
 module HexletCode
   class Error < StandardError; end
+
+  def self.form_for(_user, **attrs)
+    action = attrs.delete(:url) || '#'
+
+    HexletCode::Tag.build('form', action: action, method: 'post', **attrs)
+  end
 end
