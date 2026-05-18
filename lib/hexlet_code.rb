@@ -9,9 +9,14 @@ loader.setup
 module HexletCode
   class Error < StandardError; end
 
-  def self.form_for(_user, **attrs)
+  def self.form_for(user, **attrs)
     action = attrs.delete(:url) || '#'
+    field_builder = FieldBuilder.new(user)
 
-    HexletCode::Tag.build('form', action: action, method: 'post', **attrs)
+    yield field_builder if block_given?
+
+    HexletCode::Tag.build('form', action: action, method: 'post', **attrs) do
+      field_builder.render
+    end
   end
 end
