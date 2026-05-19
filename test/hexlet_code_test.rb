@@ -45,6 +45,30 @@ class HexletCodeTest < Minitest::Test
     assert_equal fixture('textarea_with_cols_and_rows'), result
   end
 
+  def test_form_with_submit
+    user = User.new job: 'hexlet'
+
+    result = HexletCode.form_for user do |f|
+      f.input :name
+      f.input :job
+      f.submit
+    end
+
+    assert_equal fixture('form_with_submit'), result
+  end
+
+  def test_form_with_custom_submit
+    user = User.new job: 'hexlet'
+
+    result = HexletCode.form_for user, url: '#' do |f|
+      f.input :name
+      f.input :job
+      f.submit 'Wow'
+    end
+
+    assert_equal fixture('form_with_custom_submit'), result
+  end
+
   def test_non_existent_value
     user = User.new name: 'rob', job: 'hexlet', gender: 'm'
 

@@ -3,9 +3,7 @@
 [![CI](https://github.com/Kvaizer/rails-project-63/actions/workflows/ci.yml/badge.svg)](https://github.com/Kvaizer/rails-project-63/actions/workflows/ci.yml)
 [![hexlet-check](https://github.com/Kvaizer/rails-project-63/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/Kvaizer/rails-project-63/actions/workflows/hexlet-check.yml)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/hexlet_code`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+HexletCode is a small form generator for Ruby objects.
 
 ## Installation
 
@@ -25,7 +23,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+User = Struct.new(:name, :job, keyword_init: true)
+user = User.new(job: 'hexlet')
+
+HexletCode.form_for user, url: '/users' do |f|
+  f.input :name
+  f.input :job, as: :text, rows: 50, cols: 50
+  f.submit 'Wow'
+end
+```
+
+Result:
+
+```html
+<form action="/users" method="post"><label for="name">Name</label><input name="name" type="text" value=""><label for="job">Job</label><textarea name="job" cols="50" rows="50">hexlet</textarea><input type="submit" value="Wow"></form>
+```
 
 ## Development
 
